@@ -221,3 +221,8 @@ document.getElementById("get-bonus-option").addEventListener('click', function()
     handleToggle("get-bonus-page")
     handleBg("get-bonus-option")
 })
+
+document.getElementById("pay-bill-option").addEventListener('click', function(){
+    handleToggle("pay-bill-page")
+    handleBg("pay-bill-option")
+})
