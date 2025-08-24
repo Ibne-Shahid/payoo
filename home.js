@@ -110,6 +110,8 @@ document.getElementById("transfer-btn").addEventListener('click', function(e){
     document.getElementById("balance").innerText = availableBalance
 })
 
+// Get bonus page
+
 document.getElementById("bonus-btn").addEventListener('click', function(e){
     e.preventDefault()
 
@@ -132,6 +134,47 @@ document.getElementById("bonus-btn").addEventListener('click', function(e){
     document.getElementById("balance").innerText = newBalance
     
     
+})
+
+// Pay bill page
+
+document.getElementById("pay-now-btn").addEventListener('click', function(e){
+    e.preventDefault()
+
+    const bank = document.getElementById("bill-bank").value
+    const accoutnNumber = document.getElementById("biller-account-number").value
+    const payingAmount = parseInt(document.getElementById("paying-amount").value)
+    const pinNumber = parseInt(document.getElementById("paying-pin-number").value)
+    const balance = parseInt(document.getElementById("balance").innerText)
+
+    if(bank === "Select Bank"){
+        alert("Please select a bank!")
+        return;
+    }
+
+    if(accoutnNumber.length != 8){
+        alert("Please provide a valid account number!")
+        return;
+    }
+
+    if(isNaN(payingAmount) || payingAmount <= 0){
+        alert("Please enter a valid amount!");
+        return;
+    }
+
+    if(pinNumber !== validPin){
+        alert("Your pin is incorrect!")
+        return;
+    }
+
+    if(payingAmount > balance){
+        alert("Insufficient balance!")
+        return;
+    }
+
+    const availableBalance = balance - payingAmount
+
+    document.getElementById("balance").innerText = availableBalance
 })
 
 // Function for toggle
