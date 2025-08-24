@@ -1,4 +1,4 @@
-document.getElementById("add-money-btn").addEventListener('click',function(e){
+document.getElementById("add-money-btn").addEventListener('click', function (e) {
     e.preventDefault()
 
     const pin = 4321
@@ -8,22 +8,22 @@ document.getElementById("add-money-btn").addEventListener('click',function(e){
     const accoutnNumber = document.getElementById("account-number").value
     const pinNumber = parseInt(document.getElementById("pin-number").value)
 
-    if(bank==="Select Bank"){
+    if (bank === "Select Bank") {
         alert("Please select a bank!")
         return;
     }
 
-    if(accoutnNumber.length != 11){
+    if (accoutnNumber.length != 11) {
         alert("Please provide a valid number!")
         return;
     }
 
-    if(pinNumber!==pin){
+    if (pinNumber !== pin) {
         alert("Your pin is incorrect!")
         return;
     }
 
-    if(addedAmount <= 0){
+    if (addedAmount <= 0) {
         alert("Please enter a valid amount!");
         return;
     }
@@ -32,7 +32,29 @@ document.getElementById("add-money-btn").addEventListener('click',function(e){
 
     const newBalance = addedAmount + balance
 
-    document.getElementById("balance").innerText = newBalance
-    
-    
+    document.getElementById("balance").innerText = newBalance   
+
+
+})
+
+// Function for toggle
+
+function handleToggle (id){
+    const forms = document.getElementsByClassName("form")
+
+    for (const form of forms){
+        form.style.display= "none"
+    }
+
+    document.getElementById(id).style.display= "block"
+}
+
+// Toggle Feature
+
+document.getElementById("add-money-option").addEventListener('click', function(){
+    handleToggle("add-money-page")
+})
+
+document.getElementById("cash-out-option").addEventListener('click', function(){
+    handleToggle("cash-out-page")
 })
