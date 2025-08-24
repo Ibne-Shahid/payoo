@@ -59,7 +59,7 @@ document.getElementById("cash-out-btn").addEventListener('click', function(e){
     }
 
     if(isNaN(withdrawnAmount) || withdrawnAmount <= 0){
-         alert("Please enter a valid amount!");
+        alert("Please enter a valid amount!");
         return;
     }
 
@@ -73,6 +73,41 @@ document.getElementById("cash-out-btn").addEventListener('click', function(e){
     document.getElementById("balance").innerText = availableBalance
 
 
+})
+
+// Transfer money page
+
+document.getElementById("transfer-btn").addEventListener('click', function(e){
+    e.preventDefault
+
+    const transferAmount = parseInt(document.getElementById("transfer-amount").value)
+    const userNumber = document.getElementById("user-number").value
+    const pinNumber = parseInt(document.getElementById("transfer-pin-number").value)
+    const balance = parseInt(document.getElementById("balance").innerText)
+
+    if(userNumber.length != 11){
+        alert("Please provide a valid number!")
+        return;
+    }
+
+    if(pinNumber!==validPin){
+        alert("Your pin is incorrect!")
+        return;
+    }
+
+    if(isNaN(transferAmount) || transferAmount <= 0){
+        alert("Please enter a valid amount!");
+        return;
+    }
+
+    if(transferAmount > balance){
+        alert("Insufficient balance!")
+        return;
+    }
+
+    const availableBalance = balance - transferAmount
+
+    document.getElementById("balance").innerText = availableBalance
 })
 
 // Function for toggle
@@ -95,4 +130,8 @@ document.getElementById("add-money-option").addEventListener('click', function()
 
 document.getElementById("cash-out-option").addEventListener('click', function(){
     handleToggle("cash-out-page")
+})
+
+document.getElementById("transfer-money-option").addEventListener('click', function(){
+    handleToggle("transfer-money-page")
 })
