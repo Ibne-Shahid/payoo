@@ -110,6 +110,30 @@ document.getElementById("transfer-btn").addEventListener('click', function(e){
     document.getElementById("balance").innerText = availableBalance
 })
 
+document.getElementById("bonus-btn").addEventListener('click', function(e){
+    e.preventDefault()
+
+    const luckyNumbers = ['N3LKY10K', 'N2LKY20K', 'N1LKY30K']
+
+    const couponNumber = document.getElementById("coupon-number").value
+    const balance = parseInt(document.getElementById("balance").innerText)
+    let newBalance = balance;
+
+    if(couponNumber===luckyNumbers[0]){
+        newBalance = balance + 10000
+    } else if (couponNumber===luckyNumbers[1]){
+        newBalance = balance + 20000
+    } else if (couponNumber===luckyNumbers[2]){
+        newBalance = balance + 30000
+    } else {
+        alert("Your coupon is invalid!")
+    }
+
+    document.getElementById("balance").innerText = newBalance
+    
+    
+})
+
 // Function for toggle
 
 function handleToggle (id){
@@ -122,16 +146,35 @@ function handleToggle (id){
     document.getElementById(id).style.display= "block"
 }
 
+function handleBg (id){
+    const formbtns = document.getElementsByClassName("toggle-bg")
+    for(const btn of formbtns){
+        btn.classList.remove("border-[#0874f2]","bg-[#0874f20d]")
+        btn.classList.add("border-gray-300")
+    }
+    document.getElementById(id).classList.remove("border-gray-300")
+    document.getElementById(id).classList.add("border-[#0874f2]","bg-[#0874f20d]")
+    
+}
+
 // Toggle Feature
 
 document.getElementById("add-money-option").addEventListener('click', function(){
     handleToggle("add-money-page")
+    handleBg("add-money-option")
 })
 
 document.getElementById("cash-out-option").addEventListener('click', function(){
     handleToggle("cash-out-page")
+    handleBg("cash-out-option")
 })
 
 document.getElementById("transfer-money-option").addEventListener('click', function(){
     handleToggle("transfer-money-page")
+    handleBg("transfer-money-option")
+})
+
+document.getElementById("get-bonus-option").addEventListener('click', function(){
+    handleToggle("get-bonus-page")
+    handleBg("get-bonus-option")
 })
