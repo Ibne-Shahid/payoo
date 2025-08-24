@@ -226,3 +226,15 @@ document.getElementById("pay-bill-option").addEventListener('click', function(){
     handleToggle("pay-bill-page")
     handleBg("pay-bill-option")
 })
+
+// Logout Button
+
+document.getElementById("logout-btn").addEventListener('click', function(){
+    let userConfirmed = confirm("Are you sure?")
+
+    if(userConfirmed){
+        window.location.href= "./index.html"
+    } else {
+        alert("You clicked NO, stay logged in.")
+    }
+})
