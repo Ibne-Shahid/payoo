@@ -10,7 +10,8 @@ document.getElementById("loginButton").addEventListener('click', function(e){
 
     if (numberInput === mobileNumber && pinInput === pinNumber){
         window.location.href="./home.html"
-    }else{
+        alert("Welcome to Payoo!")
+    }else {
         alert("Invalid Information!")
     }
 
